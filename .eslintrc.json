@@ -1,0 +1,20 @@
+{
+  "extends": ["airbnb"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js"],
+        "paths": ["."]
+      }
+    }
+  },
+  "plugins": ["prettier"],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "quotes": 0,
+    "no-console": "off"
+  }
+}
