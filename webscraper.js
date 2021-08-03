@@ -1,29 +1,40 @@
-// TODO: write this file!
-var cheerio = require('cheerio');
-var request = require('request');
-var fs = require('fs');
-var jsonData =[];
+//var require: NodeRequire;
 
-request('https://www.pluralsight.com/blog/software-development/10-ways-to-write-cleaner-code',
-    function(error,resonse,html){
-        if(!errorr && resonse.statusCode == 200 ){
-            var $ = cheerio.load(html);
-            var allData = $('p.row');
+const puppeteer = require('puppeteer')
+async function scrapeProduct(url){
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(url);
 
-            allData.each(function(index,element){
-                var tittle = $(element).find('a.hdrlnk').text();
-                var image = $(element).find('a.hdrlnk').image();
-                var link = 'https://www.pluralsight.com'
+    const [elementImage] = await page.$x('//*[@id="post-126247"]/div/p[1]/img');
+    const sourceAttribube = await elementImage.getProperty('sourceAttribube');
+    const sourceText = await sourceAttribube.jsonValue();
 
-                var data ={
-                    tittle:tittle,
-                    image:image,
-                    link:link
+   console.log({sourceText});
+   browser.close();    
+}
+scrapeProduct('https://www.geeksforgeeks.org/java/');
 
-                }
-                jsonData.push(data);
-            });
-        }
-    }
-    
-    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
