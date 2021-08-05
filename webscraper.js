@@ -1,19 +1,24 @@
-//var require: NodeRequire;
+//import Puppeteer from 'puppeteer';
+import  React from 'react'
 
 const puppeteer = require('puppeteer')
-async function scrapeProduct(url){
+async () => {
+    
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto(url);
+    
+    await page.goto('https://www.geeksforgeeks.org/java/');
 
-    const [elementImage] = await page.$x('//*[@id="post-126247"]/div/p[1]/img');
-    const sourceAttribube = await elementImage.getProperty('sourceAttribube');
-    const sourceText = await sourceAttribube.jsonValue();
+    const [Image] = await page.$x('//*[@id="post-126247"]/div/p[1]/img');
+    const sourceAttribube = await Image.getProperty('sourceAttribube');
+    const Text = await sourceAttribube.jsonValue();
 
-   console.log({sourceText});
-   browser.close();    
+   console.log({Text});
+
+   browser.close(); 
+   //console.log(`Site HTML: ${$.html()}\n\n`)   
 }
-scrapeProduct('https://www.geeksforgeeks.org/java/');
+//fetchHTML('https://www.geeksforgeeks.org/java/')
 
 
 
