@@ -43,7 +43,7 @@ async function scrapeData() {
       $('a').each((i, link) => {
         const href = link.attribs.href; 
         
-        //Display links on the etermonal
+        //Display links on the terminal
         console.log(href); 
   
   })
