@@ -8,12 +8,12 @@ async function scrapeData() {
   
   try {
 
-        //prompts the user to enter the url of the website on the terminal
+      //prompts the user to enter the url of the website on the terminal
       const prompt =  PromptSync();
       let WebSite = prompt("State the website to scrape: ");  
   
       const browser = await puppeteer.launch();
-      const page = await browser.newPage();    //Promise which resolves to a new Page object.
+      const page = await browser.newPage();    //Promise which resolves to a new Page object
 
       const url = WebSite; 
       await page.goto(url);  //Navigates to a URL 
@@ -51,7 +51,6 @@ async function scrapeData() {
 }     catch (error) {
       console.error(error);
 }
-}  
-   
+}     
 // Invoke the above function
 scrapeData();
