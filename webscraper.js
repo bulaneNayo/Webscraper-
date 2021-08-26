@@ -35,13 +35,15 @@ async function scrapeData() {
 
       //Desplay images links on the terminal 
       console.log(images);
-
+      
+      //Scrape all website links
       await got(url).then(response => {
       const $ = cheerio.load(response.body);
     
       $('a').each((i, link) => {
         const href = link.attribs.href; 
-
+        
+        //Display links on the etermonal
         console.log(href); 
   
   })
