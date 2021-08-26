@@ -4,6 +4,7 @@ import got from "got";
 import PromptSync from "prompt-sync";
 import puppeteer from "puppeteer";
 
+//a function that scrapes title, links and images links from a provided url
 async function scrapeData() {
   
   try {
